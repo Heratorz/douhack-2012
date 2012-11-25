@@ -23,8 +23,9 @@ Sprite {
             PropertyChanges {
                 target: megaCat
                 animationName: "vxod"
-                frames: 6
+                frames: 24
                 repeat: false
+                interval: 150
             }
         }
     ]

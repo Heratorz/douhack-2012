@@ -8,6 +8,7 @@ Item {
     property int currentFrame: 0
     property alias running: spriteTimer.running
     property bool repeat: true
+    property alias interval: spriteTimer.interval
 
     onRepeatChanged: {
         if (sprite.repeat)
@@ -28,11 +29,7 @@ Item {
 
     Timer {
         id: spriteTimer
-        interval: {
-            var spriteInterval = Math.round(1200 / sprite.frames);
-            console.debug(spriteInterval);
-            return spriteInterval;
-        }
+        interval: 100
         repeat: true
         running: true
         onTriggered: {
