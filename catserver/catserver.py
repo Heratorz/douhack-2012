@@ -29,7 +29,7 @@ def as_json(f):
         json_string = json.dumps(result, default=_from_backend_object)
         response = make_response(json_string, http_status)
         response.content_type = 'application/json'
-        if 'application/json' not in request.headers.get('Accept'):
+        if 'application/json' not in request.headers.get('Accept', []):
             response.content_type = 'text/plain'
         return response
     return wrapped
@@ -73,7 +73,7 @@ def get_loyalty():
 @app.route('/loyalty/', methods=['PUT'])
 @as_json
 def update_loyalty():
-    new_loyalty = request.form.get('loyalty', 0, type=int)
+    new_loyalty = request.form.get('loyalty', type=int)
     g.db.execute('UPDATE megacat SET loyalty=((SELECT loyalty FROM megacat)+(?))', [new_loyalty])
     g.db.commit()
     return 'success', 200

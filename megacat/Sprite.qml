@@ -3,11 +3,14 @@ import QtQuick 1.1
 Item {
     id: sprite
 
+    signal animationEnded
+
     property string animationName//: "vxod"
     property int frames//: 6
     property int currentFrame: 0
     property alias running: spriteTimer.running
     property bool repeat: true
+    property int repeatCount: -1
     property alias interval: spriteTimer.interval
 
     onRepeatChanged: {
@@ -37,10 +40,19 @@ Item {
                 ++sprite.currentFrame;
             }
             else {
-                if (sprite.repeat)
+                if (sprite.repeat) {
+                    if (sprite.repeatCount !== -1) {
+                        if ((--sprite.repeatCount) <= 0) {
+//                            spriteTimer.running = false;
+                            sprite.animationEnded();
+                        }
+                    }
                     sprite.currentFrame = 0;
-                else
-                    spriteTimer.running = false;
+                }
+                else {
+//                    spriteTimer.running = false;
+                    sprite.animationEnded();
+                }
             }
         }
     }
