@@ -29,8 +29,10 @@
 			<li><span class='param_name'>{{ name }}: </span>{{ value }}</li>
 		{% endfor %}
 		</ul>
+		{% if with_yandex %}
 		<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
 <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="icon" data-yashareQuickServices="facebook,twitter,gplus"></div> 
+		{% endif %}
 	</div>
 </body>	
 </html>

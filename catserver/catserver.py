@@ -58,8 +58,9 @@ def teardown_request(exception):
 
 @app.route('/')
 def start_page():
+    with_yandex = 'with_yandex' in request.args
     loyalty = g.db.execute('SELECT loyalty FROM megacat').fetchone()[0]
-    return render_template('start_page.html', params=dict(loyalty=loyalty))
+    return render_template('start_page.html', params=dict(loyalty=loyalty), with_yandex=with_yandex)
 
 
 @app.route('/loyalty/', methods=['GET'])
