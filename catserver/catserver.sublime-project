@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"build_systems":
+	[
+		{
+			"name": "RUN SERVER",
+			"cmd": ["python", "-u", "$project_path/catserver.py"],
+			"working_dir": "$project_path"
+		}
+	]
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<title>Ubergotchi by Heratorz</title>
+	<style type="text/css">
+		body {
+			background: #ffffff url('http://1.bp.blogspot.com/_2p1n26VRFU0/SuyGmYuBSeI/AAAAAAAAAjs/_ZKofb3LZB8/S1600-R/heratorzlogo2+(2).png') fixed no-repeat 10px 0px;
+			margin-left: 10px
+		}
+
+		h1 {
+			font-family: "Segoe UI Light"
+		}
+
+		.megabody {
+			padding-left: 120px;
+		}
+
+		.param_name {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="megabody">
+		<h1>MegaCat Statistics:</h1>
+		<ul>
+		{% for name, value in params.items() %}
+			<li><span class='param_name'>{{ name }}: </span>{{ value }}</li>
+		{% endfor %}
+		</ul>
+		<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>
+<div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="icon" data-yashareQuickServices="facebook,twitter,gplus"></div> 
+	</div>
+</body>	
+</html>
