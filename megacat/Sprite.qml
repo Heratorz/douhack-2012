@@ -12,6 +12,8 @@ Item {
     property bool repeat: true
     property int repeatCount: -1
     property alias interval: spriteTimer.interval
+    property alias imageOpacity: spriteFrame.opacity
+    property alias overlayOpacity: spriteOverlay.opacity
 
     onRepeatChanged: {
         if (sprite.repeat)
@@ -26,8 +28,16 @@ Item {
     Image {
         id: spriteFrame
         source: "images/" + sprite.animationName + "/" + sprite.animationName + sprite.currentFrame + ".png"
+        smooth: true
 
         anchors.fill: parent
+    }
+
+    Image {
+        id: spriteOverlay
+        source: "images/sit/overlay.png"
+        opacity: 0.0
+        anchors.fill: spriteFrame
     }
 
     Timer {

@@ -18,8 +18,9 @@ Rectangle {
         Text {
             id: loyaltyText
 
-            text: "0"
+            text: "100"
             color: "#400040"
+            smooth: true
 
             anchors {
                 fill: parent
@@ -28,7 +29,7 @@ Rectangle {
 
             font {
                 family: "Arial Black"
-                pixelSize: 30
+                pointSize: 16
                 bold: true
             }
 
@@ -72,8 +73,32 @@ Rectangle {
     }
 
     MegaCat {
+        id: megaCat
         width: 512
         height: 512
         anchors.centerIn: parent
+    }
+
+    Text {
+        text: "Give fish"
+        color: Qt.lighter("#400040")
+
+        width: 70
+        height: 20
+
+        font.pointSize: 16
+
+        anchors {
+            left: parent.left
+            bottom: parent.bottom
+            leftMargin: 10
+            bottomMargin: 10
+        }
+
+        MouseArea {
+            id: mouseArea
+            anchors.fill: parent
+            onClicked: { megaCat.feed(); }
+        }
     }
 }

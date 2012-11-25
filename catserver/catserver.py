@@ -74,6 +74,7 @@ def get_loyalty():
 @as_json
 def update_loyalty():
     new_loyalty = request.form.get('loyalty', type=int)
+    app.logger.debug(new_loyalty)
     g.db.execute('UPDATE megacat SET loyalty=((SELECT loyalty FROM megacat)+(?))', [new_loyalty])
     g.db.commit()
     return 'success', 200
